@@ -1,0 +1,151 @@
+---
+title: Getting Started with Silly Smile
+description: Set up your Silly Smile account and create your first documentation space in just a few minutes.
+---
+
+## Prerequisites
+
+Before you begin, ensure you have the following:
+
+<Callout kind="info">
+
+- A modern web browser like Chrome, Firefox, or Safari
+- An email address for account verification
+- Optional: A GitHub account for advanced integrations
+
+</Callout>
+
+Silly Smile works entirely in your browser, so no downloads or installations are required.
+
+## Create Your Account
+
+Sign up for Silly Smile in under a minute.
+
+<Steps>
+  <Step title="Visit the Dashboard" icon="monitor">
+    Navigate to [https://dashboard.example.com](https://dashboard.example.com).
+  </Step>
+  <Step title="Register" icon="user-plus">
+    Click **Sign Up** and enter your email and password.
+    
+    Verify your email via the confirmation link sent to your inbox.
+  </Step>
+  <Step title="Log In" icon="log-in">
+    Return to the dashboard and sign in with your credentials.
+  </Step>
+</Steps>
+
+## Create Your First Documentation Space
+
+Organize your project docs by creating a dedicated space.
+
+<Steps>
+  <Step title="New Space" icon="plus">
+    Click **New Space** in the sidebar.
+  </Step>
+  <Step title="Configure Space" icon="settings">
+    Enter a name like `My Project Docs` and select a visibility: public, private, or workspace-only.
+  </Step>
+  <Step title="Save" icon="save">
+    Click **Create**. Your space appears in the sidebar.
+  </Step>
+</Steps>
+
+## Add Initial Content
+
+Populate your space with your first document. Choose your preferred method:
+
+<Tabs>
+  <Tab title="Markdown Editor" icon="edit-3">
+    
+    Open the editor and paste Markdown content.
+    
+````markdown
+# Welcome to My Docs
+
+This is your first page.
+
+## Features
+
+- Easy editing
+- Live preview
+````
+    
+    Preview updates in real-time as you type.
+  </Tab>
+  <Tab title="Upload File" icon="upload">
+    
+    Drag and drop a `.md` or `.mdx` file into the upload area.
+    
+    <Callout kind="tip">
+      Supports up to 10MB per file. Larger docs require Git sync.
+    </Callout>
+  </Tab>
+  <Tab title="Import from GitHub" icon="github">
+    
+    Connect your repo and import docs automatically.
+    
+    Use this command in your terminal:
+    
+````bash
+git clone https://github.com/yourusername/silly-smile-docs.git
+````
+    
+  </Tab>
+</Tabs>
+
+## Basic Interface Tour
+
+Familiarize yourself with the key areas:
+
+<Columns cols={3}>
+  <Card title="Sidebar" icon="sidebar">
+    Manage spaces, pages, and settings.
+  </Card>
+  <Card title="Editor" icon="edit-3">
+    Write in Markdown or MDX with syntax highlighting.
+  </Card>
+  <Card title="Preview" icon="eye">
+    Live rendering with components and themes.
+  </Card>
+</Columns>
+
+## Next Steps
+
+<CodeGroup tabs="CLI,API">
+```bash
+# Install Silly Smile CLI
+npm install -g @sillysmile/cli
+
+# Create new page
+sillysmile create page --space "My Project Docs" --title "API Reference"
+```
+```javascript
+// API example to list spaces
+const response = await fetch('https://api.example.com/v1/spaces', {
+  headers: {
+    Authorization: `Bearer ${YOUR_API_KEY}`
+  }
+});
+```
+</CodeGroup>
+
+Explore more:
+
+<Columns cols={2}>
+  <Card title="Customization" icon="brush" href="/configuration">
+    Theme and layout options.
+  </Card>
+  <Card title="Collaboration" icon="users" href="/guides">
+    Invite team members.
+  </Card>
+</Columns>
+
+<Expandable title="Troubleshooting Common Issues" default-open="false">
+
+- **Login fails?** Check your email verification.
+- **Upload errors?** Ensure file size `<10MB` and format is Markdown.
+
+</Expandable>
+
+Congratulations! You now have a fully functional Silly Smile documentation space. Start building your docs today.

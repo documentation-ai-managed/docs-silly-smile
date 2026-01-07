@@ -1,0 +1,109 @@
+---
+title: Changelog
+description: Track the latest updates and improvements to Silly Smile, including recent version releases.
+---
+
+## Recent Updates
+
+Stay informed about all changes to Silly Smile. You receive automatic notifications for major releases through your dashboard at `https://dashboard.example.com`.
+
+<Callout kind="info">
+  Check the [GitHub releases page](https://github.com/example/silly-smile/releases) for full details, including commit history and contributor credits.
+</Callout>
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added support for custom brand colors in documentation themes. Set your `{brandColor}` in the config to match `#3B82F6`.
+- Introduced `<Video>` component for embedding self-hosted and platform videos directly in MDX pages.
+
+## Improvements
+
+- Enhanced Mermaid diagram rendering with better error handling for complex graphs.
+- Optimized page load times by `>30%` through lazy-loading of JSX components.
+
+## Bug Fixes
+
+- Fixed parsing errors when using nested code blocks inside `<Tabs>`.
+- Resolved issue with `<ParamField>` displaying incorrect `param-type` for query parameters.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- New `<Columns>` component supports up to 5 columns for flexible layouts.
+- Added `tags` prop to `<Update>` components for better categorization in changelogs.
+
+## Bug Fixes
+
+- Corrected escaping of `{` and `}` characters in prose text to prevent MDX parsing failures.
+- Fixed `<Steps>` icon rendering on mobile devices.
+
+## Documentation Updates
+
+- Expanded component reference with syntax checklists and verification rules.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Initial release of core MDX components: `<Callout>`, `<Card>`, `<CodeGroup>`, and more.
+- Full support for YAML frontmatter parsing without blank line errors.
+
+## Breaking Changes
+
+- Removed legacy `<Mermaid>` JSX component. Use fenced code blocks with ````mermaid```` syntax only.
+
+## Improvements
+
+- Added 20+ Lucide icons for all components.
+
+</Update>
+
+## Upcoming Changes
+
+Preview what's coming next to Silly Smile. These features enter beta soon.
+
+<Columns cols={3}>
+  <Card title="AI-Powered Components" icon="zap" href="/docs/ai-features">
+    Auto-generate code examples and diagrams.
+  </Card>
+  <Card title="Advanced Analytics" icon="bar-chart-3" href="/docs/analytics">
+    Track documentation engagement metrics.
+  </Card>
+  <Card title="Multi-Language Docs" icon="globe" href="/docs/i18n">
+    Full internationalization support.
+  </Card>
+</Columns>
+
+<Expandable title="Migration Guide for v1.2.0" default-open="true">
+  Follow these steps to upgrade:
+
+  <Steps>
+    <Step title="Backup Config" icon="database">
+      Export your current settings from `https://dashboard.example.com/settings`.
+    </Step>
+    <Step title="Update Package" icon="package">
+      <CodeGroup tabs="npm,yarn">
+      ````bash
+      npm install silly-smile@1.2.0
+      ````
+      ````bash
+      yarn add silly-smile@1.2.0
+      ````
+      </CodeGroup>
+    </Step>
+    <Step title="Test Components" icon="play-circle">
+      Verify `<Video>` and custom themes work in your pages.
+    </Step>
+  </Steps>
+</Expandable>
+
+<Callout kind="tip">
+  Upgrade to the latest version for the best experience. Visit [Quickstart](/quickstart) for installation help.
+</Callout>

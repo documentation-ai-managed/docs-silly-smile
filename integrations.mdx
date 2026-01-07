@@ -1,0 +1,175 @@
+---
+title: Integrations and Extensions
+description: Connect Silly Smile with third-party tools to enhance your documentation workflow and collaboration.
+---
+
+## Overview
+
+Silly Smile supports seamless integrations with popular third-party services. You can set up webhooks for real-time notifications, embed external content directly into your docs, and export your documentation to various formats. These features streamline collaboration and extend your documentation's reach.
+
+<Callout kind="info">
+  Review your Silly Smile plan to ensure webhook and export features are enabled.
+</Callout>
+
+## Supported Integrations
+
+Connect Silly Smile to your favorite tools for notifications, version control, and more.
+
+<Columns cols={3}>
+  <Card title="Slack" icon="message-circle" href="https://slack.com" target="_blank">
+    Receive update notifications in dedicated channels.
+  </Card>
+  <Card title="Discord" icon="message-square" href="https://discord.com" target="_blank">
+    Notify teams about doc changes in Discord servers.
+  </Card>
+  <Card title="GitHub" icon="github" href="https://github.com" target="_blank">
+    Sync documentation with repositories for CI/CD workflows.
+  </Card>
+</Columns>
+
+<Columns cols={2}>
+  <Card title="Google Workspace" icon="file-text" href="https://workspace.google.com" target="_blank">
+    Embed Google Docs and Sheets.
+  </Card>
+  <Card title="Notion" icon="edit-3" href="https://notion.so" target="_blank">
+    Import and export pages effortlessly.
+  </Card>
+</Columns>
+
+## Setting Up Webhooks
+
+Webhooks notify external services when events occur, such as document updates or publishes. Use them to keep teams informed.
+
+### Create a Webhook
+
+<Steps>
+  <Step title="Navigate to Integrations" icon="settings">
+    Go to your workspace settings and select the `Integrations` tab.
+  </Step>
+  <Step title="Add Webhook URL" icon="link">
+    Enter your webhook endpoint, like `https://your-webhook-url.com/silly-smile`.
+  </Step>
+  <Step title="Select Events" icon="bell">
+    Choose events: `doc.updated`, `doc.published`, `comment.added`.
+  </Step>
+  <Step title="Test and Save" icon="check-circle">
+    Send a test payload and save the configuration.
+  </Step>
+</Steps>
+
+### Webhook Payload Example
+
+Webhooks send JSON payloads. Handle them in your server.
+
+<CodeGroup tabs="Node.js,Python">
+  ```javascript
+  const express = require('express');
+  const app = express();
+  app.use(express.json());
+
+  app.post('/silly-smile', (req, res) => {
+    const event = req.headers['x-silly-smile-event'];
+    const data = req.body;
+    console.log(`Event: ${event}`, data);
+    res.status(200).send('OK');
+  });
+
+  app.listen(3000);
+  ```
+  ```python
+  from flask import Flask, request, jsonify
+
+  app = Flask(__name__)
+
+  @app.route('/silly-smile', methods=['POST'])
+  def webhook():
+      event = request.headers.get('X-Silly-Smile-Event')
+      data = request.json
+      print(f"Event: {event}", data)
+      return jsonify({'status': 'OK'}), 200
+
+  if __name__ == '__main__':
+      app.run(port=3000)
+  ```
+</CodeGroup>
+
+## Platform-Specific Webhook Setup
+
+Configure webhooks for specific platforms.
+
+<Tabs>
+  <Tab title="Slack" icon="message-circle">
+    Use Slack's incoming webhooks.
+    
+    <ParamField header="Content-Type" param-type="string">`application/json`</ParamField>
+    
+    ```bash
+    curl -X POST https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK \
+      -H "Content-Type: application/json" \
+      -d '{"text": "Silly Smile doc updated: {title}"}'
+    ```
+  </Tab>
+  <Tab title="Discord" icon="message-square">
+    Post to Discord webhook URLs.
+    
+    ```bash
+    curl -H "Content-Type: application/json" \
+      -d '{"content": "New Silly Smile update!"}' \
+      https://discord.com/api/webhooks/YOUR/WEBHOOK/ID
+    ```
+  </Tab>
+</Tabs>
+
+## Embedding External Content
+
+Embed live content from other services into your Silly Smile docs.
+
+Use iframes for interactive embeds:
+
+````mdx
+<Iframe
+  src="https://your-embed-url.com/widget"
+  title="External Widget"
+  width="100%"
+  height="400"
+/>
+````
+
+<Callout kind="tip">
+  Ensure embeds respect Silly Smile's iframe sandbox for security.
+</Callout>
+
+## Exporting Documentation
+
+Export your docs to share offline or integrate elsewhere.
+
+<Steps>
+  <Step title="Select Space" icon="folder">
+    Choose the documentation space.
+  </Step>
+  <Step title="Choose Format" icon="download">
+    Pick PDF, Markdown, or HTML.
+  </Step>
+  <Step title="Customize" icon="edit">
+    Set options like include comments or page range.
+  </Step>
+  <Step title="Export" icon="file-down">
+    Download or generate a shareable link.
+  </Step>
+</Steps>
+
+<Expandable title="Advanced Export Options" default-open="false">
+  For bulk exports, use the API:
+  
+  ```bash
+  curl -X POST https://api.example.com/v1/spaces/{spaceId}/export \
+    -H "Authorization: Bearer YOUR_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "format": "pdf",
+      "includeComments": true
+    }'
+  ```
+</Expandable>
+
+These integrations make Silly Smile a central hub for your documentation needs. Start with webhooks for immediate notifications.
